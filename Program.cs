@@ -5,6 +5,8 @@ using Limilabs.Mail;
 using MySql.Data.MySqlClient;
 using Limilabs.Mail.Headers;
 using Limilabs.Mail.Licensing;
+using Limilabs.Client;
+using System.Net.Security;
 
 namespace mailConnection
 {
@@ -12,10 +14,10 @@ namespace mailConnection
     {
         static void Main(string[] args)
         {
-            string fileName = Limilabs.Mail.Licensing.LicenseHelper.GetLicensePath();
-            LicenseStatus status = Limilabs.Mail.Licensing.LicenseHelper.GetLicenseStatus();
+            string fileName = LicenseHelper.GetLicensePath();
+            LicenseStatus status = LicenseHelper.GetLicenseStatus();
 
-            if (status != Limilabs.Mail.Licensing.LicenseStatus.Valid)
+            if (status != LicenseStatus.Valid)
             {
                 throw new Exception("License is not valid: " + status);
 
@@ -40,6 +42,9 @@ namespace mailConnection
 
                     using (Imap imap = new Imap())
                     {
+
+                        imap.ServerCertificateValidate += new ServerCertificateValidateEventHandler(Validate);
+
                         imap.ConnectSSL("open.cobama.com.mx");  // or ConnectSSL for SSL
                         imap.UseBestLogin("tickets@cobama.com.mx", "Mhtemplos2022+");
                         imap.SelectInbox();
@@ -76,5 +81,24 @@ namespace mailConnection
                 }
             }
         }
+
+        private static void Validate(
+        object sender,
+        ServerCertificateValidateEventArgs e)
+            {
+                const SslPolicyErrors ignoredErrors =
+                    // self-signed
+                    SslPolicyErrors.RemoteCertificateChainErrors
+                    // name mismatch
+                    | SslPolicyErrors.RemoteCertificateNameMismatch;
+
+                if ((e.SslPolicyErrors & ~ignoredErrors)
+                    == SslPolicyErrors.None)
+                {
+                    e.IsValid = true;
+                    return;
+                }
+                e.IsValid = false;
+            }
     }
 }
