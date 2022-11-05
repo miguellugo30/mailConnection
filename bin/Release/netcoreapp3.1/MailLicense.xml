@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<License>
+  <Id>509b1c1b-cb57-4cd3-b2d4-febfedcd94f8</Id>
+  <ProductName>Mail.dll</ProductName>
+  <SubscriptionUntil>2023-09-21</SubscriptionUntil>
+  <RegisteredTo>Miguel Chavez Lugo</RegisteredTo>
+  <LicenseType>single developer</LicenseType>
+  <BuyerName>Miguel Chavez Lugo</BuyerName>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>mo6irqqhftTYcNOIrLrMwuP/PbA=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>dGuz0NqfV9ULEciEAVyShLne295sqG6Mp3jiIuohpgEIl1jwJNs6FTVtPGRXqS4aeeFyGgVsdB9xtXp55yDYciZIslnTlku59Jg7IY13Pl0TZv5ovhdYYfB9Ek4Pevbt4fvCj5VDwtoNz1kAiuMAWuC3LczyBwf35KfKWPiAS3Q=</SignatureValue>
+  </Signature>
+</License>

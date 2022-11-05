@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Mail.dll" />
+    <None Remove="MySql.Data" />
+    <None Remove="MailLicense.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Mail.dll" Version="3.0.22234.1038" />
+    <PackageReference Include="MySql.Data" Version="8.0.30" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MailLicense.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>
